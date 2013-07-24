@@ -39,6 +39,8 @@ public class MainActivity extends Activity implements LocationListener,
         GooglePlayServicesClient.ConnectionCallbacks,
         GooglePlayServicesClient.OnConnectionFailedListener {
 
+    private static String url = "https://dl.dropboxusercontent.com/s/zs9x96ml35gq98q/geodata.json";
+
     private GoogleMap mMap;
 
     // A request to connect to Location Services
@@ -607,7 +609,7 @@ public class MainActivity extends Activity implements LocationListener,
 
             try {
                 HttpClient client = new DefaultHttpClient();
-                HttpGet request = new HttpGet("https://dl.dropboxusercontent.com/s/zs9x96ml35gq98q/geodata.json");
+                HttpGet request = new HttpGet(url);
                 String content = client.execute(request, new BasicResponseHandler());
                 if (!TextUtils.isEmpty(content)) {
                     return new JSONObject(content);
